@@ -1,0 +1,141 @@
+
+/****************************** courts.html CSS *******************************/
+.courtthumbnail {
+    width: 256px;
+    height: 265px;
+
+}
+
+.courtthumbnail img {
+    width: 248px;
+    height: 220px;
+    border: 1px solid rgb(121, 117, 117);
+    border-radius: 4px;
+    box-shadow: 0px 0px 0px 1px rgba(54, 40, 40, 0.3);   
+
+}
+
+.courtsdiv {
+margin: 1px;
+}
+
+
+/**************************** REGISTRATION AND LOGIN CSS ****************************/
+.registrationdiv {
+    width: 400px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: rgb(242, 243, 247)
+}
+
+.logindiv {
+    width: 400px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: rgb(242, 243, 247)
+}
+
+#registrationbody, #loginbody, #courtsbody{
+    background-color: rgba(44, 195, 241, 0.658);
+    height: 100%;
+    overflow: auto;
+}
+
+.center-block {
+  display: block;
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.boxmargin{
+   width: 90%;
+   margin: 5px auto 30px;
+}
+
+.registrationdiv h3, .logindiv h3 {
+    text-align: center;
+    color: rgb(99,99,99);
+    margin: 20px;
+}
+
+span.input-group-addon i {
+    color: #6bb0cc;
+    font-size: 19px;
+    margin: 5px 8px 5px 8px;
+}
+
+#iconmargin {
+    margin: 0px 3px; 
+}
+
+#iconmargin1 {
+    margin: 0px 2px 0px 3px; 
+}
+
+
+.form-control {
+    padding: 7px 10px;
+}
+
+.input-group {
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21);
+}
+
+.signinp {
+    margin-top: 6px;
+    font-size: 15px;
+}
+
+html, body {
+    height: 100%;
+  }
+
+body {
+    min-height: 100%;
+}
+
+
+
+/****************************** show_courts.html CSS *******************************/
+#weatherdiv { 
+height: 80px;
+background-color: green;
+}
+
+.mapdiv {
+    height: 300px;
+    width: 100%;
+    /* margin: ; */
+    background-color: red;
+}
+
+.showcourtmaindiv {
+    background-color: yellow;
+    width: 100%;
+    height: 100%;
+
+
+}
+
+#leftcontentcourt {
+    background-color: blue;
+    height: 900px;
+    width: 100%;
+
+}
+
+
+
+#maincontentcourt {
+    height: 900px;
+    width: 100%;
+    background-color: gray;
+}  
+
+#rightcontentcourt {
+    height: 900px;
+    width: 100%;
+    background-color: pink;
+
+}
