@@ -5,6 +5,12 @@ from django.shortcuts import render, redirect
 def index(request):
     return render(request, "hoopfinder/landing.html")
 
+def home(request):
+    return render(request, "hoopfinder/main.html")
+    
+def map(request):
+    return render(request, "hoopfinder/maps.html")
+
 def courts(request):
     return render(request, "hoopfinder/courts.html")
 
