@@ -19,7 +19,6 @@
 margin: 1px;
 }
 
-
 /**************************** REGISTRATION AND LOGIN CSS ****************************/
 .registrationdiv {
     width: 400px;
@@ -35,10 +34,16 @@ margin: 1px;
     background-color: rgb(242, 243, 247)
 }
 
-#registrationbody, #loginbody, #courtsbody{
+
+/* decide on what color all body is, rn court is grayish and registration and login is light blueish */
+#registrationbody, #loginbody{
     background-color: rgba(44, 195, 241, 0.658);
     height: 100%;
     overflow: auto;
+}
+
+#courtsbody {
+    background-color:rgb(204, 193, 193);
 }
 
 .center-block {
@@ -103,27 +108,20 @@ height: 80px;
 background-color:  rgb(204, 193, 193);
 }
 
-.mapdiv {
-    height: 300px;
-    width: 100%;
-    /* margin: ; */
-    background-color: red;
-}
-
 .showcourtmaindiv {
-    background-color: yellow;
+    background-color:rgb(204, 193, 193);
     width: 100%;
     height: 100%;
 }
 
 #leftcontentcourt {
-    background-color:rgb(204, 193, 193);;
-    height: 900px;
+    background-color:rgb(204, 193, 193);
+    height: 100%;
     width: 100%;
 }
 
 #maincontentcourt {
-    height: 900px;
+    height: 100%;
     width: 100%;
     background-color: rgb(202, 202, 202);
 }  
@@ -131,7 +129,7 @@ background-color:  rgb(204, 193, 193);
 #rightcontentcourt {
     height: 900px;
     width: 100%;
-    background-color: rgb(204, 193, 193);;
+    background-color: rgb(204, 193, 193);
 }
 
 #temperaturep {
@@ -155,7 +153,13 @@ background-color:  rgb(204, 193, 193);
 
 .maincontenttext {
     text-align: center;
+    margin-top: 7px;
     border-bottom: 1px solid rgb(189, 172, 172);
+    font-size: 18px;
+}
+
+.maincontenttext p {
+    margin: 3px;
 }
 
 #courtimg {
@@ -167,7 +171,6 @@ background-color:  rgb(204, 193, 193);
     width: 25%;
     font-size: 13px;
     margin-left: 5px;
-    /* vertical-align: ; */
 }
 
 .reviewauthor p {
@@ -198,3 +201,65 @@ background-color:  rgb(204, 193, 193);
     font-weight: bold;
 }
 
+.reviewlabel {
+font-size: 14px;
+}
+
+.userpicture {
+    text-align: center;
+}
+
+.usericon {
+    margin: 10px 0px;
+    width: 115px;
+    border-radius: 60px;
+    border: 6px outset rgb(163, 133, 133);
+}
+
+.userinfo p {
+    margin: 3px;
+    font-size: 15px;
+    margin-left: 15px;
+}
+
+.userinfodiv {
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgb(189, 172, 172);
+}
+
+.mapdiv {
+    height: 300px;
+    width: 100%;
+    margin-top: 20px;
+    background-color: red;
+    border: 2px solid gray;
+}
+
+.playersonline {
+    margin-top: 20px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgb(189, 172, 172);
+}
+
+.currentplayersonline {
+    padding-top: 5px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgb(189, 172, 172);
+}
+
+.currentplayersonline p{
+    margin: 2px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.currentplayersonline li {
+    margin: -2px;
+    margin-left: -25px;
+    font-size: 14px;
+}
+
+li {
+    list-style: none;
+}
