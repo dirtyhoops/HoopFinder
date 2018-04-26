@@ -21,3 +21,11 @@
 .user_info{
     vertical-align: top;
 }
+.reviews{
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px;
+
+    padding: 15px;
+    
+}

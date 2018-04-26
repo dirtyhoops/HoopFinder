@@ -43,7 +43,7 @@
         </div> <!-- end of nav bar -->
         <br>
         <div class="main" >
-            <div class="align-self-baseline">
+            <div class="align-self-baseline" style="margin:10px;">
                 <img src="../../static/hoopfinder/img/playericon.png" style="display: inline-block">
                 
                 <div class="user_profile" style="display: inline-block; vertical-align:top;">
@@ -71,85 +71,149 @@
                 
                 <br>
                 <br>
-               <div class="d-flex justify-content-around">
-                    <div style="display: inline-block; vertical-align:top"> 
-                            <h4>Add you favorite courts</h4>
-                            <p>Add all the courts that you have visited and even all of your favorite courts. <a href="">Add courts</a></p>
-                            <div class="fav_courts">
-                                <div style="display: inline-block; height:150px; width:150px; background-color: black; margin: 10px;"></div>
-                                <div class="court_desc" style="display: inline-block">
-                                    <p>sdkfjhsdjkf</p>
+            <div class="d-flex justify-content-around">
+                <div id="friends" style="width: 227px; padding: 20px;">
+                    <h4>Friends (4)</h4>
+                   <div>
+                        <p><a href="" style="color: black">Daryll</a></p>
+                        <p><a href="" style="color: black">Jacky</a></p>
+                        <p><a href="" style="color: black">Greg</a></p>
+                        <p><a href="" style="color: black">Anna</a></p>
+                   </div>
+                   <hr>
+                   <img src="../../static/hoopfinder/img/dojoad.png" style="width:190px;" alt="">
+                </div>
+                <div class="reviews" style="display: inline-block; vertical-align:top; margin: 5px; border: 1px solid"> 
+                    <h4>Post on Player1's wall</h4>
+                    <div class="users_reviews">       
+                        <div class="fav_courts">
+                            <div style="display: inline-block; vertical-align: middle; margin: 10px;">
+                                <img src="../../static/hoopfinder/img/klay.jpg" alt="" style="height:75px; width:75px; border-radius: 50px;">
+                                <p style=" text-align: center">Klay</p>
+                            </div>
+                            <h6 style="display: inline-block; vertical-align: middle; width: 510px; border: 1px solid grey; border-radius: 20px; padding: 10px; background-color:rgb(221, 221, 221)" >Player1 is one of the dirtiest players I have ever played against. Do not pick him up on your team. He will never pass you the ball and he will fight you if you do not pass him the ball.</h6>
+                        </div>
+                    </div>
+                    <div class="users_reviews">       
+                        <div class="fav_courts">
+                            <div style="display: inline-block; vertical-align: middle; margin: 10px;">
+                                <img src="../../static/hoopfinder/img/klay.jpg" alt="" style="height:75px; width:75px; border-radius: 50px;">
+                                <p style=" text-align: center">Klay</p>
+                            </div>
+                            <h6 style="display: inline-block; vertical-align: middle; width: 510px; border: 1px solid grey; border-radius: 20px; padding: 10px; background-color:rgb(221, 221, 221)" >Player1 is one of the dirtiest players I have ever played against. Do not pick him up on your team. He will never pass you the ball and he will fight you if you do not pass him the ball.</h6>
+                        </div>
+                    </div>
+                    <div class="users_reviews">       
+                        <div class="fav_courts">
+                            <div style="display: inline-block; vertical-align: middle; margin: 10px;">
+                                <img src="../../static/hoopfinder/img/klay.jpg" alt="" style="height:75px; width:75px; border-radius: 50px;">
+                                <p style=" text-align: center">Klay</p>
+                            </div>
+                            <h6 style="display: inline-block; vertical-align: middle; width: 510px; border: 1px solid grey; border-radius: 20px; padding: 10px; background-color:rgb(221, 221, 221)" >Player1 is one of the dirtiest players I have ever played against. Do not pick him up on your team. He will never pass you the ball and he will fight you if you do not pass him the ball.</h6>
+                        </div>
+                    </div>
+                    <!-- Review Form -->
+                <form action="">
+                <div class="input-group">
+                    <textarea class="form-control" aria-label="With textarea" placeholder="Write a review"></textarea>
+                </div>        
+                <br>
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-primary btn-sm">Submit Review</button>
+                </div>                                
+                </form>
+                <hr>
+                <h4>Add your favorite courts</h4>
+                <p>Add all the courts that you have visited and even all of your favorite courts. <a href="">Add courts</a></p>
+                <div class="fav_courts">
+                    <div style="display: inline-block; height:150px; width:150px; vertical-align: middle;background-color: black; margin: 10px;"></div>
+                        <div class="court_desc" style="display: inline-block; vertical-align: middle; width: 370px;">
+                            <h6>Name: Flickenger Park</h6>
+                            <h6>Rating: *****</h6>
+                            <h6>Latest Review: This court is really ghetto and I can tell that there is alot of gang activity here.</h6>
+                        </div>
+                    </div>
+                <div class="fav_courts">
+                    <div style="display: inline-block; height:150px; width:150px; vertical-align: middle;background-color: black; margin: 10px;"></div>
+                        <div class="court_desc" style="display: inline-block; vertical-align: middle; width: 370px;">
+                            <h6>Name: Blakow Park</h6>
+                            <h6>Rating: *****</h6>
+                            <h6>Latest Review: This court is really ghetto and I can tell that there is alot of gang activity here.</h6>
+                        </div>
+                    </div>
+                <div class="fav_courts">
+                    <div style="display: inline-block; height:150px; width:150px; vertical-align: middle;background-color: black; margin: 10px;"></div>
+                        <div class="court_desc" style="display: inline-block; vertical-align: middle; width: 370px;">
+                            <h6>Name: Brokaw Park</h6>
+                            <h6>Rating: *****</h6>
+                            <h6>Latest Review: This court is really ghetto and I can tell that there is alot of gang activity here.</h6>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin: 10px; display: inline-block">
+                    <div id="accordion" style="width: 200px;" >
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Top Five Courts
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="card-body">
+                                    <table>
+                                        <tr>
+                                            <td>Flickenger </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Brokaw</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Zanker Parkinglot</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Main Street</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Casey Court</td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
-                            
                         </div>
-                        <div style="margin: 10px; display: inline-block">
-        
-                        <div id="accordion" style="width: 200px;" >
-                            <div class="card">
-                                <div class="card-header" id="headingOne">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            Top Five Courts
-                                        </button>
-                                    </h5>
-                                </div>
-                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                                    <div class="card-body">
-                                        <table>
-                                            <tr>
-                                                <td>Flickenger </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Brokaw</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Zanker Parkinglot</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Main Street</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Casey Court</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Top Five Players
+                                    </button>
+                                </h5>
                             </div>
-                            <div class="card">
-                                <div class="card-header" id="headingTwo">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            Top Five Players
-                                        </button>
-                                    </h5>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                <div class="card-body">
+                                    <table>
+                                        <tr>
+                                            <td>Vinson </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Daryll</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Alex</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jacky</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Greg</td>
+                                        </tr>
+                                    </table>
                                 </div>
-                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                                    <div class="card-body">
-                                        <table>
-                                            <tr>
-                                                <td>Vinson </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Daryll</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Alex</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Jacky</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Greg</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>                
-                            </div>               
-                        </div>
-                   
+                            </div>                
+                        </div>               
+                    </div>
                </div>
- 
             </div>
         </div> <!-- end container -- >
     </body>
