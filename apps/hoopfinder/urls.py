@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^login$', views.login),
     url(r'^new_court$', views.new_court),
     url(r'^add_court$', views.add_court),
+    url(r'^courts/(?P<id>\d+)$', views.show_court),
 ]  

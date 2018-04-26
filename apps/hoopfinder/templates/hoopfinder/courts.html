@@ -44,141 +44,18 @@
             </div>
             
             <div class="courtsdiv">
-                <div class="container"></div>
-                    <div class="row text-center" style="display: flex; flex-wrap: wrap;">
-            <!-- this is where you do the loop----------------------------------- -->
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="courtthumbnail">
-                                <img src="http://www.supremesportschicago.com/images/green-blue-with-rebounder-BASKETBALL-CT.jpg" alt="">
-                                <div class="courtinfo">
-                                <p>Zanker Park</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="courtthumbnail">
-                                <img src="http://www.nationwidegroups.com/IMG_1284.JPG" alt="">
-                                <div class="courtinfo">
-                                <p>court name</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="courtthumbnail">
-                                <img>
-                                <div class="courtinfo">
-                                <p>court name</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="courtthumbnail">
-                                <img>
-                                <div class="courtinfo">
-                                <p>court name</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="row text-center" style="display: flex; flex-wrap: wrap;">
+                    <!-- populating the courts -->    
+                    {% for x in all_courts %}
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="courtthumbnail">
-                            <img>
+                            <img src="{{x.imagelink}}" alt="">
                             <div class="courtinfo">
-                            <p>court name</p>
+                                <p class="text-capitzlize"><a href="courts/{{x.id}}">{{x.name}}</a></p>
                             </div>
                         </div>
                     </div>
-         <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="courtthumbnail">
-                                <img src="http://www.supremesportschicago.com/images/green-blue-with-rebounder-BASKETBALL-CT.jpg" alt="">
-                                <div class="courtinfo">
-                                <p>Zanker Park</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="courtthumbnail">
-                                <img src="http://www.nationwidegroups.com/IMG_1284.JPG" alt="">
-                                <div class="courtinfo">
-                                <p>court name</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="courtthumbnail">
-                                <img>
-                                <div class="courtinfo">
-                                <p>court name</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="courtthumbnail">
-                                <img>
-                                <div class="courtinfo">
-                                <p>court name</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="courtthumbnail">
-                                <img>
-                                <div class="courtinfo">
-                                <p>court name</p>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-
-       <!-- ***********DELETE THIS LATER!!!!!!!!!!***************** -->
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="courtthumbnail">
-                                    <img src="http://www.supremesportschicago.com/images/green-blue-with-rebounder-BASKETBALL-CT.jpg" alt="">
-                                    <div class="courtinfo">
-                                    <p>Zanker Park</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="courtthumbnail">
-                                    <img src="http://www.nationwidegroups.com/IMG_1284.JPG" alt="">
-                                    <div class="courtinfo">
-                                    <p>court name</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="courtthumbnail">
-                                    <img>
-                                    <div class="courtinfo">
-                                    <p>court name</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                <div class="courtthumbnail">
-                                    <img>
-                                    <div class="courtinfo">
-                                    <p>court name</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <div class="courtthumbnail">
-                                    <img>
-                                    <div class="courtinfo">
-                                    <p>court name</p>
-                                    </div>
-                                </div>
-                            </div>                       
-
-
-
-
-
-
-
+                    {% endfor %}
                 </div>  <!-- end of row -->
             </div>     <!-- end of courtsdiv -->
         </div>      <!-- end of container and id=courtsbody -->

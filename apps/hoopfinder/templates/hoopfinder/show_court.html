@@ -34,7 +34,12 @@
                 </nav>
             </div>
             <div class="col-lg-12" id="weatherdiv">
-                <p> CURRENT WEATHER goes here</p>
+            
+                    <img id="temperatureicon" src="http://openweathermap.org/img/w/{{icon}}.png" alt="">
+             
+                    <p id="temperaturep" class="text-capitalize">{{ftemperature|floatformat:2}}°F {{description}}</p> 
+
+     
             </div>
         
 
@@ -44,13 +49,65 @@
                         <div class="mapdiv">
                             <p>map goes here</p>
                         </div>
-                        <p>location:</p>
+                        <p>location: {{court.address}}, {{court.city}}, {{court.state}}. {{court.zipcode}}</p>
 
                     </div>
 
                     <div class="col-lg-6" id="maincontentcourt">
-                        <p>sfssfsf</p>
-                    </div>
+                        <div class="courtimagediv">
+                            <img id="courtimg" src ="{{court.imagelink}}" alt="">
+                        </div>
+                        <div class="maincontenttext">
+                            <p class="text-capitalize">Court's Name: {{court.name}}</p>
+                            <p>Rating: ******</p>
+                            <p>
+                        </div>
+
+                        <div class="courtreviewdiv">
+                            <!-- gonna have to change this to loop through the courts review -->
+                            <div class="rowreview">
+                                <div class="reviewauthor">
+                                    <p class ="userreviewname"><a href="#">Daryll O.</a></p>
+                                    <p>San Jose, CA</p>
+                                    <p>Rating: *****</p>
+                                </div>
+                                <div class="reviewtext">
+                                    <p>This is such an awesome court. The hoop seems bigger than usual tho, since i've been cooking it like James Harden.
+                                            This is such an awesome court. The hoop seems bigger than usual tho, since i've been cooking it like James Harden.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="rowreview">
+                                    <div class="reviewauthor">
+                                        <p class ="userreviewname"><a href="#">Daryll O.</a></p>
+                                        <p>San Jose, CA</p>
+                                        <p>Rating: *****</p>
+                                    </div>
+                                    <div class="reviewtext">
+                                        <p>This is such an awesome court. The hoop seems bigger than usual tho, since i've been cooking it like James Harden.</p>
+                                    </div>
+                                </div>
+
+
+                            <div class="reviewbox">
+                                <form>
+                                    <div class="form-group">
+                                        <label>Write a review:</label>
+                                        <textarea class="form-control" name="courtreview" rows="3"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary float-right">Submit</button>
+                                </form>
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+                    </div>   <!-- end of maincontentcourt -->
 
                     <div class="col-lg-3" id="rightcontentcourt">
                         <p>aaaa</p>
@@ -90,3 +147,8 @@
 
 
 
+
+
+<!-- 49a76676e913deb3805b87568bba047f      -------- api key for open weather -->
+
+<!-- http://api.openweathermap.org/data/2.5/weather?appid=49a76676e913deb3805b87568bba047f&zip=94040 -->
