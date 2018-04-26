@@ -34,11 +34,13 @@ body{
 .thumbnail_box{
     margin-left: 40px; 
 }
+
 #map {
     height: 400px;
     width: 75%;
 
     margin: auto;
 }
+
 
 

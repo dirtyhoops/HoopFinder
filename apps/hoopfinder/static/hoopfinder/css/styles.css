@@ -252,7 +252,7 @@ font-size: 14px;
     border-bottom: 2px solid rgb(189, 172, 172);
 }
 
-.currentplayersonline p{
+.currentplayersonline p, .eventheader p{
     margin: 2px;
     font-weight: bold;
     font-size: 15px;
@@ -266,4 +266,24 @@ font-size: 14px;
 
 li {
     list-style: none;
+}
+
+.reviewratedate {
+    width: 90%;
+}
+
+.reviewdate, .reviewstar {
+    display: inline-block;
+}
+
+.reviewstar {
+    width: 20%;
+}
+
+.eventheader {
+    margin-top: 10px;
+}
+
+.eventheader p {
+    margin-bottom: 5px;
 }
