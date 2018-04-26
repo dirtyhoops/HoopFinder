@@ -48,6 +48,12 @@ class UserManager(models.Manager):
                 errors['login'] = "Failed to login"
         return errors 
 
+
+# build a validator for adding new courts
+
+
+
+
 class User(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
@@ -65,5 +71,17 @@ class Courts(models.Model):
     state = models.CharField(max_length=2)
     zipcode = models.CharField(max_length=5)
     imagelink = models.CharField(max_length=100)
+    checked_in_user = models.ForeignKey(User, related_name="checked_into")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+
+
+class Court_Review(models.Model):
+    court_review = models.TextField()
+    rating = models.IntegerField()
+    court_reviewed = models.ForeignKey(Courts, related_name="court_reviews")
+    court_review_by = models.ForeignKey(User, related_name="reviewed_courts")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
