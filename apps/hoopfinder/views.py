@@ -13,6 +13,8 @@ def index(request):
     return render(request, "hoopfinder/landing.html")
 
 def home(request):
+    if 'userid' not in request.session:
+        request.session['userid'] = 0
     return render(request, "hoopfinder/main.html")
 
 def map(request):
@@ -31,8 +33,48 @@ def courts(request):
 def registration(request):
     return render(request, "hoopfinder/registration.html")
 
+def register(request):
+    if request.method == 'POST':
+        errors = User.objects.basic_validator(request.POST)
+        if len(errors):
+            for key, value in errors.items():
+                messages.error(request, value)
+            return redirect('/registration')
+        else:
+            request.session['first_name'] = request.POST['first_name']
+            first_name = request.POST['first_name']
+            last_name = request.POST['last_name']
+            email = request.POST['email']
+            password = request.POST['password']
+
+            #BCRYPT
+            pw = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
+            confpassword = request.POST['confpassword']
+           
+            #create an account and push it to the database
+            user2 = User.objects.create(first_name = first_name, last_name =last_name, email = email, password = pw)
+            request.session['userid'] = user2.id
+            
+            # change this to userdashboard
+            return redirect('/home')
+
+
 def login(request):
     return render(request, "hoopfinder/login.html")
+
+def login_post(request):
+    if request.method == 'POST':
+        errors = User.objects.login_validator(request.POST) 
+        if len(errors):
+            for key, value in errors.items():
+                messages.error(request, value)
+            return redirect('/')
+        else:
+            user1 = User.objects.get(email=request.POST['email'])
+            request.session['userid'] = user1.id
+            # change this to user dashboard
+            print("youre logged in " + user1.first_name)
+            return redirect('/home')
 
 def new_court(request):
     return render(request, "hoopfinder/new_court.html")

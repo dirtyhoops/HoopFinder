@@ -40,8 +40,8 @@
             <div class="logindiv">
                 <h3>Login</h3>
                 <div class="boxmargin">
-                    <form action="/login" method="post">
-                        <!-- {% csrf_token %} -->
+                    <form action="/login_post" method="post">
+                        {% csrf_token %}
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true" class="iconmargin"></i></span>

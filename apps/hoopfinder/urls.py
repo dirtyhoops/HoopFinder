@@ -8,6 +8,8 @@ urlpatterns = [
     url(r'^map$', views.map),
     url(r'^user_dashboard$', views.userdashboard),
     url(r'^registration$', views.registration),
+    url(r'^register$', views.register),
+    url(r'^login_post$', views.login_post),
     url(r'^login$', views.login),
     url(r'^new_court$', views.new_court),
     url(r'^add_court$', views.add_court),

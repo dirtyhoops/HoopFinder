@@ -6,7 +6,7 @@ import bcrypt
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 # Create your models here.
 class UserManager(models.Manager):
-    def register_validator(self, postData):
+    def basic_validator(self, postData):
         errors = {}
         # First name validates length
         if len(postData['first_name']) < 2:
@@ -28,9 +28,10 @@ class UserManager(models.Manager):
         if len(postData['password']) < 8:
             errors["password"] = "Password must contain at least 9 characters"
         # Password check matching password
-        if postData['password'] != postData['conf_password']: 
+        if postData['password'] != postData['confpassword']: 
             errors['confpassword'] = "Passwords do not match"
         return errors 
+
     def login_validator(self, postData):
         errors = {}
         email = postData['email']
@@ -45,8 +46,6 @@ class UserManager(models.Manager):
             else:
                 print('--------faild tp login')
                 errors['login'] = "Failed to login"
-        
-        
         return errors 
 
 class User(models.Model):

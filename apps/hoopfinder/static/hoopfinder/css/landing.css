@@ -10,7 +10,7 @@ body {
 }
 
 #landing-header h1{
-    color: #fff;
+    color: black;
     font-size: 43px;
 }
 
@@ -48,22 +48,22 @@ body {
 
 .slideshow li:nth-child(2) { 
     background-image: url(https://imageshack.com/i/pmQcIXOQj);
-    animation-delay: 10s; 
+    animation-delay: 7s; 
 }
 
 .slideshow li:nth-child(3) { 
     background-image: url(https://imageshack.com/i/pn6OSlVpj);
-    animation-delay: 20s; 
+    animation-delay: 14s; 
 }
 
 .slideshow li:nth-child(4) { 
     background-image: url(https://imageshack.com/i/poW5ET2Rj);
-    animation-delay: 30s; 
+    animation-delay: 21s; 
 }
 
 .slideshow li:nth-child(5) {   
     background-image: url(https://imageshack.com/i/pmpWZ0t7j);
-    animation-delay: 40s; 
+    animation-delay: 28s; 
 }
 
 @keyframes imageAnimation { 
