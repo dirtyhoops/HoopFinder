@@ -8,6 +8,15 @@ import requests
 def index(request):
     return render(request, "hoopfinder/landing.html")
 
+def home(request):
+    return render(request, "hoopfinder/main.html")
+
+def map(request):
+    return render(request, "hoopfinder/maps.html")
+    
+def userdashboard(request):
+    return render(request, "hoopfinder/user_dashboard.html")
+
 def courts(request):
     all_courts = Courts.objects.all()
     context = {
