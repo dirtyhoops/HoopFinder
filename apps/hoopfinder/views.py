@@ -5,6 +5,10 @@ import requests
 
 # Create your views here.
 
+# MAKE AN EDIT USER page
+# MAKE SURE THE DATABASE IS ALL CONNECTED TO EACH OTHER
+# MAKE SURE THE THEME IS ALL GOOD TO GO BY FRIDAY MORNING
+
 def index(request):
     return render(request, "hoopfinder/landing.html")
 
@@ -60,10 +64,4 @@ def show_court(request, id):
         "court": court
     }
 
-
-
-    
-    
-    
-   
     return render(request, "hoopfinder/show_court.html", context)
