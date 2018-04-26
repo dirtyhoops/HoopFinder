@@ -58,22 +58,4 @@ class User(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
 
-class Courts(models.Model):
-    name = models.CharField(max_length=255)
-    address = models.CharField(max_length=500)
-    court_picture = models.FileField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-class Court_review(models.Model):
-    review = models.CharField(max_length=500, default='')
-    reviewed_by = models.ForeignKey(User, related_name="court_reviews")
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-class User_review(models.Model):
-    review = models.CharField(max_length=500, default='')
-    reviewed_by = models.ForeignKey(User, related_name="user_reviews")
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
