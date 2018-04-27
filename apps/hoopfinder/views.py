@@ -15,6 +15,8 @@ def index(request):
 def home(request):
     if 'userid' not in request.session:
         request.session['userid'] = 0
+    if 'courtid' not in request.session:
+        request.session['courtid'] = 0
     return render(request, "hoopfinder/main.html")
 
 def map(request):
@@ -76,6 +78,10 @@ def login_post(request):
             print("youre logged in " + user1.first_name)
             return redirect('/home')
 
+def logout(request):
+    request.session.clear()
+    return redirect('/')
+
 def new_court(request):
     return render(request, "hoopfinder/new_court.html")
 
@@ -94,16 +100,58 @@ def add_court(request):
 
 def show_court(request, id):
     court = Courts.objects.get(id = id)
+    user = User.objects.get(id = request.session['userid'])
+    request.session['courtid'] = court.id
     api_address = "http://api.openweathermap.org/data/2.5/weather?appid=49a76676e913deb3805b87568bba047f&zip="+ court.zipcode
     json_data = requests.get(api_address).json()
     temperature = json_data['main']['temp']
     ftemperature = (temperature*9)/5 - 459.67
+    reviews = Court_Review.objects.filter(court_reviewed = court)
+    checkedinusers = User.objects.filter(checked_into = court)
+
+
     context = {
         # "city": json_data['sys'][0]['name'],
         "ftemperature": ftemperature,
         "description": json_data['weather'][0]['description'],
         "icon": json_data['weather'][0]['icon'],
-        "court": court
+        "court": court,
+        "reviews": reviews,
+        "checkedinusers": checkedinusers,
+        "user": user,
     }
 
     return render(request, "hoopfinder/show_court.html", context)
+
+
+def review_court(request):
+    if request.method == 'POST':
+        rating1 = request.POST['optrating']
+        if rating1 == "1":
+            rate = 1
+        if rating1 == "2":
+            rate = 2
+        if rating1 == "3":
+            rate = 3
+        if rating1 == "4":
+            rate = 4
+        if rating1 == "5":
+            rate = 5
+
+        print("it went to review_court")
+        courtreview = request.POST['courtreview']
+        print(courtreview)
+        court = Courts.objects.get(id = request.session['courtid'])
+        user = User.objects.get(id = request.session['userid'])
+        review = Court_Review.objects.create(court_review = courtreview, rating = rate, court_reviewed = court, court_review_by = user)
+        id = request.session['userid']
+        return redirect('/courts/' + str(id))
+
+def checkin(request):
+    if request.method =='POST':
+        id = request.session['userid']
+        court = Courts.objects.get(id = request.session['courtid'])
+        user = User.objects.get(id = request.session['userid'])
+        # court.checked_in_user.add(user)
+        # court.save()
+        return redirect('/courts/' + str(id))
