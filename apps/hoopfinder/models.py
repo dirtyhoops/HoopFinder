@@ -67,3 +67,10 @@ class Courts(models.Model):
     imagelink = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+class UserReviews(models.Model):
+    review = models.TextField()
+    reviewed_user = models.ForeignKey(User, related_name="personal_reviews")
+    reviewed_by = models.ForeignKey(User, related_name="user_reviews")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

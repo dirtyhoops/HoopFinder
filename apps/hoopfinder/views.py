@@ -21,6 +21,30 @@ def map(request):
     return render(request, "hoopfinder/maps.html")
     
 def userdashboard(request):
+    all_users = User.objects.all()
+    print(all_users, "***********************")
+    context= {
+        'all_users': all_users
+    }
+    return render(request, "hoopfinder/users.html", context)
+def user_page(request, user_id):
+    user = User.objects.get(id = user_id)
+    user_name = user.first_name
+    print(user, "***********************")
+
+
+    user_reviews = UserReviews.objects.filter(reviewed_user = User.objects.get(id = user_id))
+
+
+
+    context= {
+        'user': user,
+        'user_reviews': user_reviews
+    }
+    return render(request, "hoopfinder/user_dashboard.html", context)
+
+def users(request):
+    
     return render(request, "hoopfinder/user_dashboard.html")
 
 def courts(request):
@@ -61,6 +85,10 @@ def register(request):
 
 def login(request):
     return render(request, "hoopfinder/login.html")
+
+def logout(request):
+    request.session.clear()
+    return redirect('/')
 
 def login_post(request):
     if request.method == 'POST':
@@ -107,3 +135,16 @@ def show_court(request, id):
     }
 
     return render(request, "hoopfinder/show_court.html", context)
+
+def add_user_review(request):
+    if request.method == 'POST':
+        
+        reviewer = User.objects.get(id = request.session['userid'])
+        reviewed_user = User.objects.get(id = request.POST['reviewed_user'])
+        id = request.POST['reviewed_user']
+        review = request.POST['review']
+        print(id, "this is the id ***************")
+
+        UserReviews.objects.create(review = review, reviewed_user = reviewed_user, reviewed_by = reviewer)
+
+        return redirect("/user/"+id)
