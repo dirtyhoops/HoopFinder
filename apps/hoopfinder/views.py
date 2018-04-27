@@ -15,36 +15,14 @@ def index(request):
 def home(request):
     if 'userid' not in request.session:
         request.session['userid'] = 0
+    if 'courtid' not in request.session:
+        request.session['courtid'] = 0
     return render(request, "hoopfinder/main.html")
 
 def map(request):
     return render(request, "hoopfinder/maps.html")
     
 def userdashboard(request):
-    all_users = User.objects.all()
-    print(all_users, "***********************")
-    context= {
-        'all_users': all_users
-    }
-    return render(request, "hoopfinder/users.html", context)
-def user_page(request, user_id):
-    user = User.objects.get(id = user_id)
-    user_name = user.first_name
-    print(user, "***********************")
-
-
-    user_reviews = UserReviews.objects.filter(reviewed_user = User.objects.get(id = user_id))
-
-
-
-    context= {
-        'user': user,
-        'user_reviews': user_reviews
-    }
-    return render(request, "hoopfinder/user_dashboard.html", context)
-
-def users(request):
-    
     return render(request, "hoopfinder/user_dashboard.html")
 
 def courts(request):
@@ -86,10 +64,6 @@ def register(request):
 def login(request):
     return render(request, "hoopfinder/login.html")
 
-def logout(request):
-    request.session.clear()
-    return redirect('/')
-
 def login_post(request):
     if request.method == 'POST':
         errors = User.objects.login_validator(request.POST) 
@@ -103,6 +77,10 @@ def login_post(request):
             # change this to user dashboard
             print("youre logged in " + user1.first_name)
             return redirect('/home')
+
+def logout(request):
+    request.session.clear()
+    return redirect('/')
 
 def new_court(request):
     return render(request, "hoopfinder/new_court.html")
@@ -122,29 +100,58 @@ def add_court(request):
 
 def show_court(request, id):
     court = Courts.objects.get(id = id)
+    user = User.objects.get(id = request.session['userid'])
+    request.session['courtid'] = court.id
     api_address = "http://api.openweathermap.org/data/2.5/weather?appid=49a76676e913deb3805b87568bba047f&zip="+ court.zipcode
     json_data = requests.get(api_address).json()
     temperature = json_data['main']['temp']
     ftemperature = (temperature*9)/5 - 459.67
+    reviews = Court_Review.objects.filter(court_reviewed = court)
+    checkedinusers = User.objects.filter(checked_into = court)
+
+
     context = {
         # "city": json_data['sys'][0]['name'],
         "ftemperature": ftemperature,
         "description": json_data['weather'][0]['description'],
         "icon": json_data['weather'][0]['icon'],
-        "court": court
+        "court": court,
+        "reviews": reviews,
+        "checkedinusers": checkedinusers,
+        "user": user,
     }
 
     return render(request, "hoopfinder/show_court.html", context)
 
-def add_user_review(request):
+
+def review_court(request):
     if request.method == 'POST':
-        
-        reviewer = User.objects.get(id = request.session['userid'])
-        reviewed_user = User.objects.get(id = request.POST['reviewed_user'])
-        id = request.POST['reviewed_user']
-        review = request.POST['review']
-        print(id, "this is the id ***************")
+        rating1 = request.POST['optrating']
+        if rating1 == "1":
+            rate = 1
+        if rating1 == "2":
+            rate = 2
+        if rating1 == "3":
+            rate = 3
+        if rating1 == "4":
+            rate = 4
+        if rating1 == "5":
+            rate = 5
 
-        UserReviews.objects.create(review = review, reviewed_user = reviewed_user, reviewed_by = reviewer)
+        print("it went to review_court")
+        courtreview = request.POST['courtreview']
+        print(courtreview)
+        court = Courts.objects.get(id = request.session['courtid'])
+        user = User.objects.get(id = request.session['userid'])
+        review = Court_Review.objects.create(court_review = courtreview, rating = rate, court_reviewed = court, court_review_by = user)
+        id = request.session['userid']
+        return redirect('/courts/' + str(id))
 
-        return redirect("/user/"+id)
+def checkin(request):
+    if request.method =='POST':
+        id = request.session['userid']
+        court = Courts.objects.get(id = request.session['courtid'])
+        user = User.objects.get(id = request.session['userid'])
+        # court.checked_in_user.add(user)
+        # court.save()
+        return redirect('/courts/' + str(id))

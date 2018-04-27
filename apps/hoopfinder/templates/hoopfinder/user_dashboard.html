@@ -6,7 +6,7 @@
     <!-- google map api = AIzaSyBDrQTLucGMc_Mf1NBAj4GoelgPyS9UWjU -->
 
     <title>HoopFinder</title>
-    {% load static %}
+    <!-- {% load static %} -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="../../static/hoopfinder/css/user-dashboard.css">
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
@@ -35,7 +35,7 @@
                     <a class="nav-item nav-link" href="/map">Maps</a>
                     <a class="nav-item nav-link" href="/user_dashboard">Users</a>
                     <a class="nav-item nav-link" href="/courts">Courts</a>
-                    <a class="nav-item nav-link" href="/logout">Logout</a>
+                    <a class="nav-item nav-link" href="#">Logout</a>
                     
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                 
                 <div class="user_profile" style="display: inline-block; vertical-align:top;">
                     <div class="user_info" style="display: inline-block;">
-                        <h3 class="text-capitalize">{{user.first_name}} {{user.last_name}}</h3>
+                        <h3>Player 1</h3>
                         <div class="user_info">
                             <div style="display: inline-block;">
                                 <h6>About -</h6>
@@ -84,31 +84,44 @@
                    <img src="../../static/hoopfinder/img/dojoad.png" style="width:190px;" alt="">
                 </div>
                 <div class="reviews" style="display: inline-block; vertical-align:top; margin: 5px; border: 1px solid"> 
-                    <h4>Post on <span class="text-capitalize">{{user.first_name}}'s</span> wall</h4>
-                    {% for review in user_reviews %}
+                    <h4>Post on Player1's wall</h4>
                     <div class="users_reviews">       
                         <div class="fav_courts">
                             <div style="display: inline-block; vertical-align: middle; margin: 10px;">
                                 <img src="../../static/hoopfinder/img/klay.jpg" alt="" style="height:75px; width:75px; border-radius: 50px;">
-                                <a href=""><p class="text-capitalize" style=" text-align: center">{{ review.reviewed_by.first_name }}</p></a>
+                                <p style=" text-align: center">Klay</p>
                             </div>
-                            <h6 style="display: inline-block; vertical-align: middle; width: 510px; border: 1px solid grey; border-radius: 20px; padding: 10px; background-color:rgb(221, 221, 221)" >{{review.review}}</h6>
+                            <h6 style="display: inline-block; vertical-align: middle; width: 510px; border: 1px solid grey; border-radius: 20px; padding: 10px; background-color:rgb(221, 221, 221)" >Player1 is one of the dirtiest players I have ever played against. Do not pick him up on your team. He will never pass you the ball and he will fight you if you do not pass him the ball.</h6>
                         </div>
                     </div>
-                   {% endfor %}
+                    <div class="users_reviews">       
+                        <div class="fav_courts">
+                            <div style="display: inline-block; vertical-align: middle; margin: 10px;">
+                                <img src="../../static/hoopfinder/img/klay.jpg" alt="" style="height:75px; width:75px; border-radius: 50px;">
+                                <p style=" text-align: center">Klay</p>
+                            </div>
+                            <h6 style="display: inline-block; vertical-align: middle; width: 510px; border: 1px solid grey; border-radius: 20px; padding: 10px; background-color:rgb(221, 221, 221)" >Player1 is one of the dirtiest players I have ever played against. Do not pick him up on your team. He will never pass you the ball and he will fight you if you do not pass him the ball.</h6>
+                        </div>
+                    </div>
+                    <div class="users_reviews">       
+                        <div class="fav_courts">
+                            <div style="display: inline-block; vertical-align: middle; margin: 10px;">
+                                <img src="../../static/hoopfinder/img/klay.jpg" alt="" style="height:75px; width:75px; border-radius: 50px;">
+                                <p style=" text-align: center">Klay</p>
+                            </div>
+                            <h6 style="display: inline-block; vertical-align: middle; width: 510px; border: 1px solid grey; border-radius: 20px; padding: 10px; background-color:rgb(221, 221, 221)" >Player1 is one of the dirtiest players I have ever played against. Do not pick him up on your team. He will never pass you the ball and he will fight you if you do not pass him the ball.</h6>
+                        </div>
+                    </div>
                     <!-- Review Form -->
-                <form action="/add_user_review" method="post">
-                    {% csrf_token %}
-                    <div class="input-group">
-                        <textarea class="form-control" name="review" aria-label="With textarea" placeholder="Write a review"></textarea>
-                    </div>        
-                    <br>
-                    <div class="d-flex justify-content-end">
-                        <input type="hidden" name="reviewed_user" value="{{user.id}}">
-                        <button type="submit" class="btn btn-primary btn-sm">Submit Review</button>
-                    </div>                                
+                <form action="">
+                <div class="input-group">
+                    <textarea class="form-control" aria-label="With textarea" placeholder="Write a review"></textarea>
+                </div>        
+                <br>
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-primary btn-sm">Submit Review</button>
+                </div>                                
                 </form>
-                    <!-- end review form -->
                 <hr>
                 <h4>Add your favorite courts</h4>
                 <p>Add all the courts that you have visited and even all of your favorite courts. <a href="">Add courts</a></p>

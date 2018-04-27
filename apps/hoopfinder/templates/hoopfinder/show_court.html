@@ -27,7 +27,7 @@
                         <a class="nav-item nav-link" href="#">Maps</a>
                         <a class="nav-item nav-link" href="#">Users</a>
                         <a class="nav-item nav-link" href="#">Courts</a>
-                        <a class="nav-item nav-link" href="#">Logout</a>
+                        <a class="nav-item nav-link" href="/logout">Logout</a>
                         
                         </div>
                     </div>
@@ -48,9 +48,15 @@
                                 <img class="usericon" src="../static/hoopfinder/img/usericon.png">
                             </div>
                             <div class="userinfo">
-                                <p>Name: Firstname Lastname</p>
+                                <p class="text-capitalize">Name: {{user.first_name}} {{user.last_name}}</p>
                                 <p>Location: San Jose, CA</p>
-                                <p>Rating: *****</p>
+                                <p>Rating:
+                                    <!-- run a for loop to and iterate it depends on the ratings. floor.math -->
+                                <img class = "ratingball" src="../static/hoopfinder/img/ball.png">
+                                <img class = "ratingball" src="../static/hoopfinder/img/ball.png">
+                                <img class = "ratingball" src="../static/hoopfinder/img/ball.png">
+                                <img class = "ratingball" src="../static/hoopfinder/img/ball.png">
+                                <img class = "ratingball" src="../static/hoopfinder/img/ball.png">
                                 <p>Reviews: 5</p>
                             </div>
                         </div>
@@ -67,81 +73,86 @@
                         </div>
                         <div class="maincontenttext">
                             <p class="text-capitalize">Court's Name: {{court.name}}</p>
-                            <p>Rating: ******</p>
-                            <p>
+                            <p>Rating:
+                            <img class = "ratingball2" src="../static/hoopfinder/img/ball2.png">
+                            <img class = "ratingball2" src="../static/hoopfinder/img/ball2.png">
+                            <img class = "ratingball2" src="../static/hoopfinder/img/ball2.png">
+                            <img class = "ratingball2" src="../static/hoopfinder/img/ball2.png">
+                            <img class = "ratingball2" src="../static/hoopfinder/img/ball2.png">
                         </div>
 
                         <div class="courtreviewdiv">
-                            <!-- gonna have to change this to loop through the courts review -->
-                            <div class="rowreview">
+                        <!-- gets all the reviews for the courts -->
+                        {% for x in reviews %}
+                        <div class="rowreview">
                                 <div class="reviewauthor">
-                                    <p class ="userreviewname"><a href="#">Daryll O.</a></p>
+                                    <div class="reviewauthorimage">
+                                        <img class="reviewimage" src="../static/hoopfinder/img/usericon2.png" alt="">
+                                    </div>
+                                    <p class ="userreviewname"><a class ="text-capitalize" href="#">{{x.court_review_by.first_name}} {{ x.court_review_by.last_name|slice:"1" }}.</a></p>
                                     <p>San Jose, CA</p>
-                                    <p>Rating: *****</p>
+                                    <p>Rating: ★★★★★</p>
                                 </div>
                                 <div class="reviewtext">
                                     <div class="reviewratedate">
                                         <div class="reviewstar">
-                                            <p>*****</p>
+                                        {% if x.rating == 1 %}
+                                        <p class="star"> ★</p>
+                                        {%  elif x.rating == 2 %}
+                                            <p class="star"></p> ★★</p>
+                                        {% elif x.rating == 3 %}
+                                            <p class="star"> ★★★</p>
+                                        {%  elif x.rating == 4 %}
+                                            <p class="star"> ★★★★</p>
+                                        {%  elif x.rating == 5 %}
+                                            <p class="star">  ★★★★★</p>
+                                        {%endif%}
                                         </div>
                                         <div class="reviewdate">
-                                            <p>4/23/2018</p> 
+                                            <p>{{x.created_at}}</p> 
                                         </div>
                                     </div>
-                                    <p>This is such an awesome court. The hoop seems bigger than usual tho, since i've been cooking it like James Harden.
-                                            This is such an awesome court. The hoop seems bigger than usual tho, since i've been cooking it like James Harden.
-                                    </p>
+                                    <p>{{x.court_review}}</p>
                                 </div>
                             </div>
-
-                            <div class="rowreview">
-                                    <div class="reviewauthor">
-                                        <p class ="userreviewname"><a href="#">Daryll O.</a></p>
-                                        <p>San Jose, CA</p>
-                                        <p>Rating: *****</p>
-                                    </div>
-                                    <div class="reviewtext">
-                                        <div class="reviewratedate">
-                                            <div class="reviewstar">
-                                                <p>*****</p>
-                                            </div>
-                                            <div class="reviewdate">
-                                                <p>4/23/2018</p> 
-                                            </div>
-                                        </div>
-                                        <p>This is such an awesome court. The hoop seems bigger than usual tho, since i've been cooking it like James Harden.</p>
-                                    </div>
-                                </div>
-
-
+                            {% endfor %}
                             <div class="reviewbox">
-                                <form>
+                                <form action="/review_court" method="post">
+                                {% csrf_token %}
+                                    <label class="reviewlabel">Write a review:</label>
+                                    <div class="radios">
+                                        <label class="radio-inline"><input type="radio" name="optrating" value="1"> 1 star</label>
+                                        <label class="radio-inline"><input type="radio" name="optrating" value="2"> 2 stars</label>
+                                        <label class="radio-inline"><input type="radio" name="optrating" value="3"> 3 stars</label>
+                                        <label class="radio-inline"><input type="radio" name="optrating" value="4"> 4 stars</label>
+                                        <label class="radio-inline"><input type="radio" name="optrating" value="5"> 5 stars</label>
+                                    </div>    
                                     <div class="form-group">
-                                        <label class="reviewlabel">Write a review:</label>
-                                        <textarea id="reviewtextarea" class="form-control" name="courtreview" rows="3"></textarea>
+                                        <textarea id="reviewtextarea" class="form-control" style="font-size: 14px" name="courtreview" rows="3"></textarea>
                                     </div>
-                                    <button type="submit" class="btn btn-dark btn-sm float-right">Submit</button>
+                                    <button type="submit" class="btn btn-dark btn-sm float-right">Submit</button>      
                                 </form>
                             </div>
-
                         </div>   <!--end of courtreviewdiv-->
                     </div>   <!-- end of maincontentcourt -->
 
                     <div class="col-lg-3" id="rightcontentcourt">
                         <div class="playersonline">
                             <!-- hard coded number, change it later -->
-                            <p>Online Hoopers: 5</p>
-                            <button type="submit" class="btn btn-dark btn-sm">Check In</button>
+                            <p>Online Hoopers: 5</p> 
+                            <form action="/checkin" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-dark btn-sm">Check In</button>
+                            </form>
+                            
                         </div>
                         <div class="currentplayersonline">
                             <p>Current Online Hoopers:</p>
                             <ul>
-                                <!-- just do two divs one for name and one for ratings so it's aligned good -->
-                                <li>Allen Iverson ****</li>
-                                <li>Kobe Bryant *****</li>
-                                <li>Carmelo Anthony ***</li>
-                                <li>Lebron James *****</li>
-                                <li>Stephen Curry ***</li>
+                                {% for y in checkedinusers %}
+                                <li class="text-capitalize">{{y.first_name}}  {{y.last_name}}       *****</li>
+                                {% endfor %}
+        
                             </ul>
                         </div>
                         <div class="courtevent">
